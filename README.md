@@ -29,6 +29,7 @@ Nhấn Tạo Cặp Khóa Mới
 Private Key hiển thị → Click vào để tự sao chép
 
 Public Key hiển thị → Dùng để xác thực
+https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234354.png
 
 ✍️ Ký số file
 Chọn file cần ký
