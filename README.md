@@ -27,9 +27,10 @@ HTML + TailwindCSS (giao diện hiện đại)
 Nhấn Tạo Cặp Khóa Mới
 
 Private Key hiển thị → Click vào để tự sao chép
-
 Public Key hiển thị → Dùng để xác thực
+
  <img src="https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234354.png" alt="Giao diện mã hóa" width="600">
+
 
 ✍️ Ký số file
 Chọn file cần ký
@@ -42,6 +43,7 @@ Nhấn Tải lên và Ký số
 
 Nhận file chữ ký .sig + public key .pub
 
+ <img src=" <img src="https://github.com/HoangNguyen111h/ThuatToanAES/blob/main/z6624534745352_cde2a3dd550d824f2e7230d2cfb639ce.jpg?raw=true" alt="Giao diện mã hóa" width="600">" alt="Giao diện mã hóa" width="600">
 🔍 Xác thực chữ ký
 Chọn file gốc
 
