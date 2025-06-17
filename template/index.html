@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ứng dụng Ký Số & Xác Thực File</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white shadow rounded p-6 w-full max-w-2xl space-y-6">
+
+    <h1 class="text-2xl font-bold text-center">🔐 Ứng Dụng Ký Số & Xác Thực</h1>
+
+    <!-- Tạo cặp khóa -->
+    <form action="/generate_keys" method="post" class="space-y-2">
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Tạo Cặp Khóa Mới</button>
+    </form>
+
+    <!-- Hiển thị private key -->
+    {% if private_key %}
+    <div class="relative">
+      <label class="font-medium">Private Key</label>
+      <textarea id="privateKey" readonly class="w-full border rounded p-2 text-sm bg-gray-50 cursor-pointer" onclick="copyPrivateKey()">{{ private_key }}</textarea>
+      <span id="copyStatus" class="absolute top-0 right-0 text-green-600 text-sm hidden">✅ Đã sao chép!</span>
+    </div>
+    {% endif %}
+
+    <!-- Hiển thị public key -->
+    {% if public_key %}
+    <div>
+      <label class="font-medium">Public Key</label>
+      <textarea readonly class="w-full border rounded p-2 text-sm bg-gray-50">{{ public_key }}</textarea>
+    </div>
+    {% endif %}
+
+    <!-- Ký file -->
+    <form action="/sign_file" method="post" enctype="multipart/form-data" class="space-y-2">
+      <label class="font-medium">📂 Chọn file để ký</label>
+      <input type="file" name="file" required class="block w-full border rounded p-2">
+      <label class="font-medium">Nhập Private Key</label>
+      <textarea name="private_key" required class="w-full border rounded p-2 text-sm"></textarea>
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full">Tải lên và Ký số</button>
+    </form>
+
+    <!-- Xác thực file -->
+    <form action="/verify_file" method="post" enctype="multipart/form-data" class="space-y-2">
+      <label class="font-medium">📄 Chọn file gốc</label>
+      <input type="file" name="file" required class="block w-full border rounded p-2">
+      <label class="font-medium">📄 Chọn file chữ ký (.sig)</label>
+      <input type="file" name="sig_file" required class="block w-full border rounded p-2">
+      <label class="font-medium">Nhập Public Key</label>
+      <textarea name="public_key" required class="w-full border rounded p-2 text-sm"></textarea>
+      <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 w-full">Xác thực</button>
+    </form>
+
+    <!-- Lịch sử file -->
+    <div>
+      <h2 class="font-semibold text-lg mb-2">📜 Lịch Sử File Đã Ký</h2>
+      {% if files %}
+        <ul class="space-y-1">
+          {% for file in files %}
+            <li class="flex items-center justify-between border rounded px-2 py-1 bg-gray-50 hover:bg-gray-100">
+              <span class="truncate">{{ file }}</span>
+              <a href="{{ url_for('uploaded_file', filename=file) }}" class="text-blue-500 hover:underline text-sm">Tải xuống</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-secondary text-sm">Chưa có file nào.</p>
+      {% endif %}
+    </div>
+
+    <!-- Thông báo flash -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-2 rounded">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+  </div>
+
+  <script>
+    function copyPrivateKey() {
+      const textarea = document.getElementById("privateKey");
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+
+      const status = document.getElementById("copyStatus");
+      status.classList.remove("hidden");
+      setTimeout(() => {
+        status.classList.add("hidden");
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
