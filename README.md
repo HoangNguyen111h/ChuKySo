@@ -29,7 +29,7 @@ Nhấn Tạo Cặp Khóa Mới
 Private Key hiển thị → Click vào để tự sao chép
 Public Key hiển thị → Dùng để xác thực
 
- <img src="https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234354.png" alt="Giao diện mã hóa" width="600">
+ <img src="https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234354.png"  width="600">
 
 
 ✍️ Ký số file
@@ -43,7 +43,7 @@ Nhấn Tải lên và Ký số
 
 Nhận file chữ ký .sig + public key .pub
 
- <img src="https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234401.png" alt="Giao diện mã hóa" width="600">
+ <img src="https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234401.png"  width="600">
 🔍 Xác thực chữ ký
 Chọn file gốc
 
@@ -58,6 +58,7 @@ Nhấn Xác thực
 🟢 Chữ ký hợp lệ
 
 🔴 Chữ ký không hợp lệ
+ <img src="https://github.com/HoangNguyen111h/ChuKySo/blob/main/Screenshot%202025-06-17%20234407.png"  width="600">
 
 📜 Lịch sử
 Hiển thị các file đã ký số
